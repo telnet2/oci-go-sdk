@@ -272,10 +272,11 @@ func addToBody(request *http.Request, value reflect.Value, field reflect.StructF
 	if e != nil {
 		return
 	}
-	marshaled, e := removeNilFieldsInJSONWithTaggedStruct(rawJSON, value)
-	if e != nil {
-		return
-	}
+	marshaled := rawJSON
+	// marshaled, e := removeNilFieldsInJSONWithTaggedStruct(rawJSON, value)
+	// if e != nil {
+	// 	return
+	// }
 
 	if defaultLogger.LogLevel() == verboseLogging {
 		Debugf("Marshaled body is: %s\n", string(marshaled))
